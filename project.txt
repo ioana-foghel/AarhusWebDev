@@ -1,0 +1,29 @@
+Plus = active members
+basic = propect members
+email: firstname@mail.com
+username: firstname
+password: firstnamelastname123
+
+Example:
+Active
+Name: John Doe
+Email: john@mail.com
+Username: John
+password: johndoe123
+
+Prospect
+Name: Sam Smith
+Email: sam@mail.com
+Username: Sam
+password: samsmith123
+
+Umbraco Backend:
+email: eaaiofog@students.eaaa.dk
+password: something28
+
+GitHub Link 1: https://github.com/cristibloj94/AarhusWebDevCoop.git
+GitHub Link 2: https://github.com/cristibloj94/AarhusWebDevCoop
+
+Contact form credentials
+email: testingumbraco@gmail.com
+password: umbracoumbraco

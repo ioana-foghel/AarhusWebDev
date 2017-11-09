@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Members>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+var memberService = ApplicationContext.Current.Services.MemberService;
+
+var activeMembers = memberService.GetMembersByGroup("Active");
+var prospectMembers = memberService.GetMembersByGroup("Prospect");
+}
+
+<div class="row">
+    <div class="col-xs-6">
+        <h1 class="text-center">Active members</h1>
+
+        @foreach (var member in activeMembers)
+        {
+            string fullPath = member.GetValue("photo").ToString();
+            string[] substrings = fullPath.Split(',');
+            string srcString = substrings[2];
+            string[] srcSubStrings = srcString.Split(':');
+            string srcPath = srcSubStrings[1].Replace("\"", "");
+            srcPath = srcPath.Replace("}", "");
+
+        <div class="col-xs-6 col-xs-offset-3" style="padding: 30px;">
+            <p>Name: <strong> @member.Name</strong></p>
+            <img style="width:400px; height: auto; margin: 0 auto;" class="img-responsive" src="@srcPath" />
+            <p>Username: @member.Username</p>
+            <p><i>Email: @member.Email</i></p>
+        </div>
+        }
+
+    </div>
+
+    <div class="col-xs-6">
+        <h1 class="text-center">Prospect members</h1>
+
+        @foreach (var member in prospectMembers)
+        {
+            <div style="padding: 30px;">
+                <p>Name: <strong> @member.Name</strong></p>
+                <p><i>Email: @member.Email</i></p>
+                <p>Username: @member.Username</p>
+            </div>
+        }
+    </div>
+</div>

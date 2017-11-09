@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+	var selection = CurrentPage.Site().FirstChild("articlesMain").Children("articlesItem")
+						.Where("Visible");
+}
+
+@foreach(var item in selection){
+<div class="col-xs-6" style="margin-top: 120px; margin-bottom: 120px;">
+    <p class="text-center"><a href="@item.Url">@item.Name</a></p>
+    <center><img src="@item.articleImage" style="width: 500px; height: auto;" /></center>
+</div>
+}

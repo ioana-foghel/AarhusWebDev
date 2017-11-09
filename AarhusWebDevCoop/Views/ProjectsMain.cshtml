@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsMain>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+
+
+@{
+	var selection = Model.Content.Site().FirstChild("projectsMain").Children("projectsItem")
+						.Where(x => x.IsVisible());
+    var selection2 = Model.Content.Site().FirstChild("projectsMain").Children("projectsItem")
+						.Where(x => x.IsVisible()).Take(2);
+}
+@Umbraco.Field("status")
+<div class="row" style="margin-top: 60px; margin-bottom: 60px;">
+    <div class="col-xs-6">
+        <br /><br /><br /><h3 class="text-center">Newly released projects</h3><br /><br /><br />
+
+        @foreach(var item in selection2){
+            <div style="margin-bottom: 20px;">
+                <p class="text-center"><a href="@item.Url">@item.Name</a></p>
+            </div>
+        }
+
+    </div>
+
+    <div style="border-left: 1px solid black;" class="col-xs-6">
+        <br /><br /><br /><h3 class="text-center">All projects</h3>
+
+        @foreach(var item in selection){
+        <div style="margin-bottom: 20px;">
+            <p class="text-center"><a href="@item.Url">@item.Name</a></p>
+        </div>
+        }
+        <br /><br /><br />
+    </div>
+
+    
+</div>
+
+
+
